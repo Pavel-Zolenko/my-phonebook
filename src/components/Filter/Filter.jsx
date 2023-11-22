@@ -1,26 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { TextField } from '@mui/material';
 import { filterChange } from 'redux/filterSlice';
-
-import { FilterLabel, FilterInput } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.filter);
 
-    const handleFilter = event => {
-      dispatch(filterChange(event.currentTarget.value));
+  const handleFilter = event => {
+    dispatch(filterChange(event.currentTarget.value));
   };
 
   return (
-    <FilterLabel htmlFor="filter">
-      Find contacts by name
-      <FilterInput
-        type="text"
-        name="filter"
-        value={filter}
-        onChange={handleFilter}
-        placeholder="Put the name for search"
-      />
-    </FilterLabel>
+    <TextField
+      id="filled-search"
+      label="Put the name for search"
+      type="search"
+      variant="filled"
+      onChange={handleFilter}
+    />
   );
 };
