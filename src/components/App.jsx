@@ -26,7 +26,9 @@ export const App = () => {
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   useEffect(() => {
-    setMode(getMode);
+    if (getMode) {
+      setMode(getMode);
+    }
   }, [getMode]);
 
   useEffect(() => {

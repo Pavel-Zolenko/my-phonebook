@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Box, Typography } from '@mui/material';
 
 export const WrapPage = styled(Box)`
-  padding: 60px 10px;
+  padding: 100px 10px 30px 10px;
   height: 100dvh;
 `;
 

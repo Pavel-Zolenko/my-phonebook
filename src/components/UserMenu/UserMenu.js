@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTheme } from '@mui/material/styles';
 import { themeChange } from 'redux/themeSlice';
@@ -16,21 +16,25 @@ import {
 } from './UserMenu.styled';
 
 export const UserMenu = () => {
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState(
+    JSON.parse(localStorage.getItem('themeMode')) ?? 'dark'
+  );
 
   const dispatch = useDispatch();
   const { user } = useAuth();
 
   const theme = useTheme();
 
+  useEffect(() => {
+    dispatch(themeChange(mode));
+    localStorage.setItem('themeMode', JSON.stringify(mode));
+  }, [dispatch, mode]);
+
   const toggleColorMode = () => {
     if (mode === 'dark') {
-      setMode('light');
-      return dispatch(themeChange('light'));
+      return setMode('light');
     }
-
-    setMode('dark');
-    return dispatch(themeChange('dark'));
+    return setMode('dark');
   };
 
   return (
