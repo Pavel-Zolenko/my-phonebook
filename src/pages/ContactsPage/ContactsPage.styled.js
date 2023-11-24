@@ -21,4 +21,5 @@ export const MainBox = styled(Box)`
 export const TypographyStyled = styled(Typography)`
   font-weight: 700;
   text-align: center;
+  color: ${p => p.theme.palette.text.primary};
 `;

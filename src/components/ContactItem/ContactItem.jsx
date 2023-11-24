@@ -5,12 +5,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { AccountCircle } from '@mui/icons-material';
 import {
   ListItemAvatar,
-  ListItemText,
   IconButton,
   ListItem,
   Tooltip,
   Avatar,
 } from '@mui/material';
+import { ListItemTextStyled } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number, phone }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export const ContactItem = ({ id, name, number, phone }) => {
           <AccountCircle />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={name} secondary={number || phone} />
+      <ListItemTextStyled primary={name} secondary={number || phone} />
     </ListItem>
   );
 };

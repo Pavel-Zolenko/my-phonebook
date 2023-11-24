@@ -8,6 +8,7 @@ export const AppBarStyled = styled(AppBar)`
   flex-direction: row;
   padding-right: 12px;
   padding-left: 12px;
+  background-color: ${p => p.theme.palette.background.header};
 
   @media screen and (min-width: 900px) {
     padding-right: 24px;

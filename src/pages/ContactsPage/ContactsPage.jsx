@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '@mui/material';
 import { Toaster } from 'react-hot-toast';
+
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter/Filter';
@@ -12,7 +12,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 
 import { MainBox, TypographyStyled, WrapPage } from './ContactsPage.styled';
 
-export default function ContactsPage({ toggleColorMode }) {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
@@ -28,9 +28,6 @@ export default function ContactsPage({ toggleColorMode }) {
     <WrapPage>
       <MainBox>
         <Toaster position="top-center" reverseOrder={false} />
-        <Button variant="contained" color="primary" onClick={toggleColorMode}>
-          Contained
-        </Button>
 
         <TypographyStyled variant="h4" component="h1">
           Phonebook
