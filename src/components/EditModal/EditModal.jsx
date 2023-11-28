@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import 'yup-phone';
 import { useFormik } from 'formik';
-import { Typography, Modal, Button, TextField } from '@mui/material';
+import { Modal, Button, TextField } from '@mui/material';
 
 import {
   BoxStyled,

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact, editContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { AccountCircle, Delete, Edit } from '@mui/icons-material';
 import {
   ListItemAvatar,
