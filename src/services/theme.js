@@ -40,6 +40,7 @@ export const getDesignTokens = mode => ({
             main: '#263238',
             secondary: '#37474f',
             header: grey[900],
+            modal: grey[800],
           },
         }
       : {
@@ -47,6 +48,7 @@ export const getDesignTokens = mode => ({
             main: '#b0bec5',
             secondary: '#eceff1',
             header: grey[700],
+            modal: grey[100],
           },
         }),
 
