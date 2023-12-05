@@ -60,6 +60,7 @@ export const contactsSlice = createSlice({
       .addCase(editContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        console.log(action.payload);
         const index = state.contacts.findIndex(
           contact => contact.id === action.payload.id
         );

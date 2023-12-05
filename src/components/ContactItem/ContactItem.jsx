@@ -1,20 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { AccountCircle, Delete, Edit } from '@mui/icons-material';
-import {
-  ListItemAvatar,
-  IconButton,
-  ListItem,
-  Tooltip,
-  Avatar,
-} from '@mui/material';
+import { ListItemAvatar, IconButton, Tooltip, Avatar } from '@mui/material';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 import { EditModal } from 'components/EditModal/EditModal';
-import { ListItemTextStyled } from './ContactItem.styled';
+import {
+  ListItemTextStyled,
+  ListItemStyled,
+  CheckboxStyled,
+} from './ContactItem.styled';
 
-export const ContactItem = ({ id, name, number, phone }) => {
+export const ContactItem = ({
+  id,
+  name,
+  number,
+  phone,
+  handleAddFavorite,
+  favorite,
+}) => {
   const [open, setOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -22,8 +31,18 @@ export const ContactItem = ({ id, name, number, phone }) => {
 
   const handleDelete = () => dispatch(deleteContact(id));
 
+  const handleChangeCheckbox = () => {
+    handleAddFavorite(id);
+  };
+
+  const isFavorite = favorite.includes(id);
+
+  useEffect(() => {
+    setChecked(isFavorite);
+  }, [isFavorite]);
+
   return (
-    <ListItem
+    <ListItemStyled
       secondaryAction={
         <>
           <Tooltip title="Edit">
@@ -47,13 +66,21 @@ export const ContactItem = ({ id, name, number, phone }) => {
         </>
       }
     >
+      <CheckboxStyled
+        label="favorite"
+        size="small"
+        icon={<FavoriteBorder />}
+        checkedIcon={<Favorite />}
+        onChange={handleChangeCheckbox}
+        checked={checked}
+      />
       <ListItemAvatar>
         <Avatar>
           <AccountCircle />
         </Avatar>
       </ListItemAvatar>
       <ListItemTextStyled primary={name} secondary={number || phone} />
-    </ListItem>
+    </ListItemStyled>
   );
 };
 
