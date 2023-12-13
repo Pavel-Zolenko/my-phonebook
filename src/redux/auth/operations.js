@@ -44,7 +44,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.request.status);
     }
   }
 );
@@ -84,6 +84,17 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const clearError = createAsyncThunk(
+  'auth/error',
+  async (credentials, thunkAPI) => {
+    try {
+      return credentials;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

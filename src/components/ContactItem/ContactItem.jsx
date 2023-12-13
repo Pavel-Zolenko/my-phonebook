@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
-import { AccountCircle, Delete, Edit } from '@mui/icons-material';
 import { ListItemAvatar, IconButton, Tooltip, Avatar } from '@mui/material';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+import {
+  AccountCircle,
+  Delete,
+  Edit,
+  FavoriteBorder,
+  Favorite,
+} from '@mui/icons-material';
+
+import { deleteContact } from 'redux/contacts/operations';
 import { EditModal } from 'components/EditModal/EditModal';
 import {
   ListItemTextStyled,
@@ -18,8 +23,9 @@ export const ContactItem = ({
   name,
   number,
   phone,
-  handleAddFavorite,
   favorite,
+  handleAddFavorite,
+  updateFavInLocalStorage,
 }) => {
   const [open, setOpen] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -29,7 +35,10 @@ export const ContactItem = ({
 
   const dispatch = useDispatch();
 
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => {
+    updateFavInLocalStorage(id);
+    return dispatch(deleteContact(id));
+  };
 
   const handleChangeCheckbox = () => {
     handleAddFavorite(id);

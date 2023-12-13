@@ -1,19 +1,26 @@
 import {
-  Container,
   CssBaseline,
   Typography,
+  Container,
+  IconButton,
   TextField,
+  Collapse,
   Avatar,
   Button,
+  Alert,
   Box,
 } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Close, LockOutlined } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/operations';
+import { FormStyled } from './LoginForm.styled';
+import { logIn, clearError } from 'redux/auth/operations';
+import { selectIsError } from 'redux/auth/selectors';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+
+  const error = useSelector(selectIsError);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -39,12 +46,12 @@ export const LoginForm = () => {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
+          <LockOutlined />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <FormStyled component="form" onSubmit={handleSubmit} noValidate>
           <TextField
             margin="normal"
             required
@@ -65,6 +72,27 @@ export const LoginForm = () => {
             id="password"
             autoComplete="current-password"
           />
+          {error && (
+            <Collapse in={true}>
+              <Alert
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      dispatch(clearError(null));
+                    }}
+                  >
+                    <Close fontSize="inherit" />
+                  </IconButton>
+                }
+                severity="error"
+              >
+                Invalid username or password
+              </Alert>
+            </Collapse>
+          )}
           <Button
             type="submit"
             fullWidth
@@ -73,7 +101,7 @@ export const LoginForm = () => {
           >
             Sign In
           </Button>
-        </Box>
+        </FormStyled>
       </Box>
     </Container>
   );
