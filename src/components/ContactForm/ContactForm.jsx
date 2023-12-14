@@ -39,41 +39,6 @@ export const ContactForm = () => {
     onSubmit: handleSubmit,
   });
   return (
-    // <Formik
-    //   initialValues={initialValues}
-    //   validationSchema={schema}
-    //   onSubmit={handleSubmit}
-    // >
-    //   <form>
-    //     <FormLabel htmlFor="name">
-    //       Name
-    //       <Input
-    //         type="text"
-    //         name="name"
-    //         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //         placeholder="Name"
-    //         required
-    //       />
-    //       <FormError name="name" />
-    //     </FormLabel>
-
-    //     <FormLabel htmlFor="number">
-    //       Number
-    //       <Input
-    //         type="tel"
-    //         name="number"
-    //         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    //         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-    //         placeholder="Number"
-    //         required
-    //       />
-    //       <FormError name="number" />
-    //     </FormLabel>
-    //     <AddBtn type="submit">Add contact</AddBtn>
-    //   </form>
-    // </Formik>
-
     <FormStyled onSubmit={formik.handleSubmit}>
       <TextField
         fullWidth

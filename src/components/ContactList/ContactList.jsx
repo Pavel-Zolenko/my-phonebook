@@ -12,7 +12,6 @@ export const ContactList = () => {
   const [addFavorite, setAddFavorite] = useState(
     JSON.parse(localStorage.getItem('favorite')) ?? []
   );
-  console.log('addFavorite', addFavorite);
   const [value, setValue] = useState('all');
   const [favFilter, setFavFilter] = useState([]);
 
