@@ -13,7 +13,7 @@ export default function Home() {
         </DescrText>
         <LinkBtn to="/contacts">
           <ButtonStyled color="primary" variant="contained">
-            Get Stated
+            Get Started
           </ButtonStyled>
         </LinkBtn>
       </Wrap>

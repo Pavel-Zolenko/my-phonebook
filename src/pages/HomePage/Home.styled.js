@@ -9,6 +9,7 @@ export const Container = styled(Box)`
   gap: 40px;
 
   height: 100dvh;
+
   padding-top: 70px;
 
   @media screen and (min-width: 768px) {
