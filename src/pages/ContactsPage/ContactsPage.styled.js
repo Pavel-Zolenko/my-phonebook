@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { Box, Typography } from '@mui/material';
 
 export const WrapPage = styled(Box)`
-  padding: 100px 10px 30px 10px;
-  height: 100dvh;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 100dvh;
 `;
 
 export const MainBox = styled(Box)`
@@ -13,6 +14,8 @@ export const MainBox = styled(Box)`
   margin: 0 auto;
   max-width: 350px;
 
+  margin-top: 100px;
+  margin-bottom: 10px;
   padding: 12px;
   border-radius: 16px;
   background-color: ${p => p.theme.palette.background.secondary};

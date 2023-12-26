@@ -3,30 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { Box, Typography, Button } from '@mui/material';
 
 export const Container = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-
-  height: 100dvh;
-
-  padding-top: 70px;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
-
-    padding: 120px 16px 0px 16px;
-    max-width: 1400px;
-  }
+  min-height: 100vh;
 `;
 
 export const Title = styled(Typography)`
   color: ${p => p.theme.palette.text.primary};
 `;
 
-export const DescrText = styled.p`
+export const Text = styled.p`
   color: ${p => p.theme.palette.text.primary};
   max-width: 410px;
 
@@ -35,7 +19,7 @@ export const DescrText = styled.p`
   }
 `;
 
-export const Wrap = styled(Box)`
+export const DescrWrap = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,3 +31,19 @@ export const ButtonStyled = styled(Button)`
   width: 180px;
 `;
 export const LinkBtn = styled(NavLink)``;
+
+export const Wrap = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  margin-top: 100px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 1400px;
+  }
+`;
